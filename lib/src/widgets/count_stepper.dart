@@ -189,7 +189,7 @@ class _FLCountStepperState extends State<FLCountStepper> {
         enabled: !widget.disableInput,
         keyboardType: TextInputType.number,
         inputFormatters: [
-          FilteringTextInputFormatter(RegExp("[-0-9]")),
+          FilteringTextInputFormatter(RegExp("[-0-9]"), allow: true),
           LengthLimitingTextInputFormatter(_maxLength),
         ],
         decoration: InputDecoration(
@@ -527,7 +527,7 @@ class FLCountStepperController extends ValueNotifier<int> {
     this.max = 999,
     this.step = 1,
   })  : assert(min < max),
-        super(defaultValue ?? min > 0 ? min : 0);
+        super(defaultValue ?? (min > 0 ? min : 0));
 
   final int defaultValue;
   final int min;
